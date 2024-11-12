@@ -16,7 +16,3 @@ seguro(X) :-marcado(X),not(sala_fedida(X)),Z1 is X - 1,marca_para_investigar(Z1)
 %------------------------------------------
 marca_para_investigar(X) :- X < 1; X > 16.
 marca_para_investigar(X) :-X > 0, X < 17,(not(marcado(X))-> assertz(marcado(X));true).
-
-
-
-

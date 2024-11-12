@@ -15,7 +15,8 @@ seguro(X):- marcado(X), sala_fedida(X), assertz(e_seguro(X)).
 seguro(X) :-marcado(X),not(sala_fedida(X)),Z1 is X - 1,marca_para_investigar(Z1),Z2 is X + 1,marca_para_investigar(Z2),Z3 is X - 4,marca_para_investigar(Z3),Z4 is X + 4,marca_para_investigar(Z4),assertz(e_seguro(X)).
 %------------------------------------------
 marca_para_investigar(X) :- X < 1; X > 16.
-marca_para_investigar(X) :- X > 0, X < 17,assertz(marcado(X)).
-%marca_para_investigar(X) :- X > 0, X < 17,not(marcado(X)),assertz(marcado(X)),!.
+marca_para_investigar(X) :-X > 0, X < 17,(not(marcado(X))-> assertz(marcado(X));true).
+
+
 
 
